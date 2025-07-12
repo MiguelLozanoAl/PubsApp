@@ -4,22 +4,30 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pubs_application"
+        xmlns:views="clr-namespace:Pubs_application.Views"
         mc:Ignorable="d"
         Title="Pubs App" Height="600" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Name="Authorsview" DataType="{x:Type views:GridView}">
+            <views:GridView DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40">
-            </RowDefinition>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
         <Menu Height="40" Width="auto" Padding="0">
-            <MenuItem Header="Author" Padding="8 0" Margin="4 0" Height="32"></MenuItem>
-            <MenuItem Header="Titles" Padding="8 0" Margin="4 0" Height="32"></MenuItem>
-            <MenuItem Header="Publishers" Padding="8 0" Margin="4 0" Height="32"></MenuItem>
+            <MenuItem Header="Author" Padding="8 0" Margin="4 0" Height="32" Click="handleAuthorsView"></MenuItem>
+            <MenuItem Header="Titles" Padding="8 0" Margin="4 0" Height="32" Click="handleTitlesView"></MenuItem>
+            <MenuItem Header="Publishers" Padding="8 0" Margin="4 0" Height="32" Click="handlePublishersView"></MenuItem>
         </Menu>
 
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Grid.Row="1" Margin="0 0 0 20">
+            <ContentControl Content="{Binding}"/>
         </ScrollViewer>
-        
+
     </Grid>
 </Window>

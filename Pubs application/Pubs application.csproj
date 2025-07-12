@@ -35,8 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +62,64 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Database\author.cs">
+      <DependentUpon>Pubs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\discount.cs">
+      <DependentUpon>Pubs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\employee.cs">
+      <DependentUpon>Pubs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\job.cs">
+      <DependentUpon>Pubs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\publisher.cs">
+      <DependentUpon>Pubs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Pubs.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pubs.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Pubs.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pubs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Pubs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pubs.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\pub_info.cs">
+      <DependentUpon>Pubs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\roysched.cs">
+      <DependentUpon>Pubs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\sale.cs">
+      <DependentUpon>Pubs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\store.cs">
+      <DependentUpon>Pubs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\title.cs">
+      <DependentUpon>Pubs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\titleauthor.cs">
+      <DependentUpon>Pubs.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modals\AuthorsModal.xaml.cs">
+      <DependentUpon>AuthorsModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AuthorsViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\PublishersViewModel.cs" />
+    <Compile Include="ViewModels\TitleViewModel.cs" />
+    <Compile Include="Views\GridView.xaml.cs">
+      <DependentUpon>GridView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +132,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Modals\AuthorsModal.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -86,6 +159,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Database\Pubs.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Pubs.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Database\Pubs.edmx.diagram">
+      <DependentUpon>Pubs.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +174,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resource Dictionaries\DataGridResources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\Pubs.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Pubs.edmx</DependentUpon>
+      <LastGenOutput>Pubs.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\Pubs.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Pubs.edmx</DependentUpon>
+      <LastGenOutput>Pubs.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Img\Delete.png" />
+    <Resource Include="Img\Edit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
